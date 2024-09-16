@@ -1,33 +1,32 @@
-# React + TypeScript + Vite
+[![license: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  # React-Typescript-Challenge
+  
+  ## Description 
+  this is a website that uses a fine-grained personal access token to retrieve user data from GitHub. The website allows you to search through multiple profiles by clicking the -+ buttons. you can also sort through the assorted list of canidates by their name or location. the site also allows you to remove the canidataes that have been suggested. The site displays a coandidate's name, location, email, company, GitHub URL, and bio.
 
-Currently, two official plugins are available:
+  ## Table of contents
+  -[Installation](#installation)
+  -[Usage](#usage)
+  -[Contribution](#contribution)
+  -[Tests](#tests)
+  -[Questions](#questions)
 
-* [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md), which uses [Babel](https://babeljs.io/) for Fast Refresh
-* [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc), which uses [SWC](https://swc.rs/) for Fast Refresh
+  ## Installation
+  Just simply click on this link https://main--candidate-search-react.netlify.app
 
-## Expanding the ESLint configuration
+  ## Usage
+  this project is to be used by employers to search through a list of candidates to where they can pick the best candidates they can find on GitHub
 
-If you're developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+  ## License
+  This project uses the MIT license
 
-* Configure the top-level `parserOptions` property as follows:
+  ## Contributing
+  no contribution guidelines
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+  ## tests
+  no tests
 
-* Replace `plugin:@typescript-eslint/recommended` with `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`.
-* Optionally, add `plugin:@typescript-eslint/stylistic-type-checked`.
-* Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` and `plugin:react/jsx-runtime` to the `extends` list.
-
----
-© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+  ## Questions
+  please visit my Github https://github.com/Kagen-Smith.
+  For additional questions, please contact me at kagensmith27@gmail.com.
