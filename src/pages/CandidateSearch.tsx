@@ -1,25 +1,28 @@
 import { useState, useEffect } from 'react';
 import { searchGithub, searchGithubUser } from '../api/API';
 import Candidate from '../interfaces/Candidate.interface';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CandidateSearch = () => {
   const [currentCandidate, setCurrentCandidate] = useState<Candidate>({
-     name: '',
-     login: '',
-     location: '',
-     avatar_url: '',
-     email: '',
-     html_url: '',
-     repos_url: '',
-     bio:  '',
-     company: '',
+    name: '',
+    login: '',
+    location: '',
+    avatar_url: '',
+    email: '',
+    html_url: '',
+    company: '',
+    bio: '',
 });
 
-
 const [candidates, setCandidates] = useState<Candidate[]>([]);
+
 const [currentIndex, setCurrentIndex] = useState<number>(0);
+
 const [searchInput, setSearchInput] = useState<string>('');
+
 const [error, setError] = useState<string | null>(null);
+
 const [noMoreCandidates, setNoMoreCandidates] = useState<boolean>(false);
 
 useEffect(() => {
@@ -27,15 +30,14 @@ useEffect(() => {
     try {
       const data = await searchGithub();
       const fetchedCandidates: Candidate[] = data.map((user: Candidate) => ({
-        name: user.name || 'No name found',
-        login: user.login || 'No login found',
-        location: user.location || 'No location found',
-        avatar_url: user.avatar_url || 'No avatar found',
-        email: user.email || 'No email found',
+        name: user.name || 'No name available',
+        login: user.login,
+        location: user.location || 'No location available',
+        avatar_url: user.avatar_url || 'No avatar available',
+        email: user.email || 'No email available',
         html_url: user.html_url || 'No address available',
-        repos_url: user.repos_url || 'No repos available',
-        bio: user.bio || 'No bio available',
         company: user.company || 'No company available',
+        bio: user.bio || 'No bio available',
       }));
       setCandidates(fetchedCandidates);
       console.log(candidates);
@@ -55,7 +57,6 @@ const handleSearch = async () => {
   try {
     const userData = await searchGithubUser(searchInput);
 
-    // Check if user data is valid (not empty)
     if (Object.keys(userData).length === 0) {
       setError('User not found');
       setCurrentCandidate({
@@ -65,22 +66,19 @@ const handleSearch = async () => {
         avatar_url: '',
         email: '',
         html_url: '',
-        repos_url: '',
-        bio:  '',
         company: '',
+        bio: '',
       });
     } else {
-      // Map user data to Candidate interface
       const fetchedCandidates: Candidate = {
-        name: userData.name || 'No name found',
-        login: userData.login || 'No login found',
-        location: userData.location || 'No location found',
-        avatar_url: userData.avatar_url || 'No avatar found',
-        email: userData.email || 'No email found',
+        name: userData.name || 'No name available',
+        login: userData.login,
+        location: userData.location || 'No location available',
+        avatar_url: userData.avatar_url || 'No avatar available',
+        email: userData.email || 'No email available',
         html_url: userData.html_url || 'No address available',
-        repos_url: userData.repos_url || 'No repos available',
-        bio: userData.bio || 'No bio available',
         company: userData.company || 'No company available',
+        bio: userData.bio || 'No bio available',
       };
       setCurrentCandidate(fetchedCandidates);
       setError(null);

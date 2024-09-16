@@ -2,21 +2,16 @@ import { useEffect, useState } from "react";
 import Candidate from '../interfaces/Candidate.interface';
 
 const SavedCandidates = () => {
-  
-  // State to hold the list of saved candidates
+
   const [candidates, setCandidates] = useState<Candidate[]>([]);
-  
-  // State for errors
+
   const [error, setError] = useState<string | null>(null);
-  
-  // State to hold the sort criteria
+
   const [sortCriteria, setSortCriteria] = useState<string>('');
-  
-  // State to hold the filter text
+
   const [filterText, setFilterText] = useState<string>('');
 
 useEffect(() => {
-  // Retrieve saved candidates from localStorage when component mounts
   console.log('Stored candidates:', candidates);
   const fetchCandidates = () => {
     const storedCandidates = localStorage.getItem('candidates');
@@ -24,29 +19,25 @@ useEffect(() => {
       setCandidates(JSON.parse(storedCandidates));
     } else {
       setCandidates([]);
-      setError('No potential candidates');
-      console.log('No candidates found in localStorage', error);
+      setError('No candidates');
+      console.log('No candidates in localStorage', error);
     }
   };
 
   fetchCandidates();
-}, []); // Empty dependency array ensures the effect only runs once
+}, []);
 
 useEffect(() => {
-  // Update the error state if no candidates in the candidates array
   if (candidates.length === 0) {
     setError('No candidates available');
   } else {
     setError(null);
   }
-}, [candidates]); // Only runs when the candidates array changes
+}, [candidates]); 
 
 const handleReject = (login: string) => {
-  // Filter out the candidate with the given login
   const updatedCandidates = candidates.filter(candidate => candidate.login !== login);
-  // Update the state with the updated list of candidates
   setCandidates(updatedCandidates);
-  // Save the updated list of candidates in localStorage
   localStorage.setItem('candidates', JSON.stringify(updatedCandidates));
 };
 
@@ -54,7 +45,6 @@ const handleReject = (login: string) => {
     <section>
       <h1 className="text-center m-5 display-4">Potential Candidates</h1>
       <div className="text-center mb-5">
-        {/* Sorting dropdown menu */}
         <label className="form-label text-light">Sort by:</label>
         <select 
           className="form-select w-auto mx-auto mb-3"
@@ -67,7 +57,6 @@ const handleReject = (login: string) => {
           <option value="company">Company</option>
         </select>
 
-        {/* Filter input field */}
         <label className="form-label">Filter by name or location:</label>
         <input 
           type="text"
@@ -78,11 +67,9 @@ const handleReject = (login: string) => {
         />
       </div>
 
-      {/* Error message or table of candidates */}
       {error ? (
         <p style={{ color: 'red', textAlign: 'center' }} className="mt-4">{error}</p>
       ) : (
-        // Table of candidates
         <table className="table table-dark table-hover table-striped" style={{ margin: '0 auto 5% auto', width: '80%' }}>
           <thead>
         <tr className="text-center">
@@ -92,7 +79,6 @@ const handleReject = (login: string) => {
           <th>Email</th>
           <th>Company</th>
           <th>Profile</th>
-          <th>Repository</th>
           <th>Bio</th>
           <th>Reject</th>
         </tr>
