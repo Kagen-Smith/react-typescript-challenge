@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { searchGithub, searchGithubUser } from '../api/API';
 import Candidate from '../interfaces/Candidate.interface';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CandidateSearch = () => {
   const [currentCandidate, setCurrentCandidate] = useState<Candidate>({
